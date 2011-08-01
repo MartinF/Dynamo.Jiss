@@ -1,0 +1,14 @@
+.svn/
+obj/
+bin/
+TestResults/
+_ReSharper*
+*.csproj.user
+*.resharper.user
+*.user
+*.suo
+*.Publish.xml
+Build/
+NuGet/
+Nuget/
+Local.testsettings
