@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 using Microsoft.Win32;
 
 // Make implementations so there is a default and easy way to handle exceptions instead of having to write it in every script ?
@@ -106,6 +107,19 @@ namespace Dynamo.Jiss
 					return homeKey.GetValue("JavaHome").ToString();	// +"\\bin\\"; ???
 				}
 			}
+		}
+
+
+
+
+
+
+		public static void ExecuteWithDelay(int ms, EventHandler action)
+		{
+			var tmp = new Timer { Interval = ms };
+			tmp.Tick += new EventHandler((o, e) => tmp.Enabled = false);
+			tmp.Tick += action;
+			tmp.Enabled = true;
 		}
 	}
 
