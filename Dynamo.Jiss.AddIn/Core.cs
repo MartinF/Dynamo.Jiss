@@ -262,7 +262,7 @@ namespace Dynamo.Jiss.AddIn
 				{
 					action(entry.EventModel);
 				}
-				catch (Exception)
+				catch (Exception e)
 				{
 					Report("The " + action.Method.Name + " event in " + entry.ProjectItem.Name + " threw an exception. "); // Better description !?
 				}
