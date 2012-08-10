@@ -12,7 +12,7 @@ namespace Dynamo.Jiss
 {
 	public static class FileHelper
 	{
-		public static string GetContentCombined(params string[] files)
+		public static string GetContent(Func<string, string> predicate, params string[] files)
 		{
 			if (files == null)
 				throw new ArgumentNullException("files");
@@ -21,10 +21,19 @@ namespace Dynamo.Jiss
 			foreach (var file in files)
 			{
 				var content = File.ReadAllText(file);
+
+				if (predicate != null)
+					content = predicate(content);
+
 				builder.Append(content);
 			}
 
 			return builder.ToString();
+		}
+
+		public static string GetContent(params string[] files)
+		{
+			return GetContent(null, files);
 		}
 
 		public static bool TryWriteFile(string fullname, out string content, params string[] files)
@@ -36,7 +45,7 @@ namespace Dynamo.Jiss
 
 			try
 			{
-				content = GetContentCombined(files);
+				content = GetContent(files);
 				File.WriteAllText(fullname, content);
 				return true;
 			}
