@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="EventModel.cs" />
     <Compile Include="ExecuteHelper.cs" />
+    <Compile Include="FileData.cs" />
     <Compile Include="FileHelper.cs" />
     <Compile Include="IEventScript.cs" />
     <Compile Include="IExecutableScript.cs" />
