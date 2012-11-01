@@ -1,6 +1,5 @@
-﻿using System.IO;
-
-// Move to Dynamo.Jiss project ?
+﻿using System.Globalization;
+using System.IO;
 
 namespace Dynamo.Jiss.Compilation
 {
@@ -9,6 +8,7 @@ namespace Dynamo.Jiss.Compilation
 		public static bool IsAbsolutePath(string path)
 		{
 			// to simple - expects x:\ ?
+
 			return path.Length >= 3 && path[1] == Path.VolumeSeparatorChar && path[2] == Path.DirectorySeparatorChar;
 		}
 		
@@ -16,10 +16,13 @@ namespace Dynamo.Jiss.Compilation
 		{
 			// Does this work ? ... come on get to work and write those tests ...
 
-			if (basePath.EndsWith(Path.DirectorySeparatorChar.ToString()))	// c:\ etc
-				return basePath + relativePath;
+			var path = basePath;
 
-			return basePath + Path.DirectorySeparatorChar + relativePath;
+			// if not basePath ends with separator \ - c: etc - add it
+			if (!basePath.EndsWith(Path.DirectorySeparatorChar.ToString(CultureInfo.InvariantCulture)))	
+				path += Path.DirectorySeparatorChar;
+
+			return path + relativePath;
 		}
 	}
 }

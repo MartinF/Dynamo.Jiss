@@ -3,6 +3,9 @@ using System.IO;
 
 // Wrapper for reading the script file
 
+
+// Let this inherit from JissScript !?
+
 namespace Dynamo.Jiss.Compilation
 {
 	public class JissFile : JissBase
@@ -16,6 +19,10 @@ namespace Dynamo.Jiss.Compilation
 		#endregion
 
 		#region Constructor
+
+		// why not have constructor that take fileName and then figure source, language and soo on out by itself
+		// Could just parse the data / get source first time needed / requested
+
 		public JissFile(string source, Language language, string fileFullName)
 		{
 			if (source == null)
@@ -34,7 +41,7 @@ namespace Dynamo.Jiss.Compilation
 			_fullname = fileFullName;
 		}
 		#endregion
-	
+
 		#region Properties
 		public override string Source { get { return _source; } }
 		public override Language Language { get { return _language; } }

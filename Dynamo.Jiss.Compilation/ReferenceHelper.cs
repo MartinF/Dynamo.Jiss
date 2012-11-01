@@ -6,8 +6,10 @@ namespace Dynamo.Jiss.Compilation
 {
 	public static class ReferenceHelper
 	{
-		public static IEnumerable<string> GetFrameworkReferences()		// GetDefaultFrameworkReferences - GetGacReferences - GetDefaultGacs !?
+		public static IEnumerable<string> GetFrameworkReferences()
 		{
+			// GetDefaultFrameworkReferences - GetGacReferences - GetDefaultGacs !?
+
 			return new string[]
 			{
 				"System.dll",

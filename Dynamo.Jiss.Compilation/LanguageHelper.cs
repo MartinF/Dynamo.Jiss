@@ -4,21 +4,22 @@ namespace Dynamo.Jiss.Compilation
 {
 	public static class LanguageHelper
 	{
-		public static Language GetLanguage(string name)
+		public static Language GetLanguage(string filename)
 		{
-			if (name == null)
-				throw new ArgumentNullException("name");
+			if (filename == null)
+				throw new ArgumentNullException("filename");
 
-			if (name.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
+			if (filename.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
 			{
 				return Language.CSharp;
 			}
 
-			if (name.EndsWith(".vb", StringComparison.OrdinalIgnoreCase))
+			if (filename.EndsWith(".vb", StringComparison.OrdinalIgnoreCase))
 			{
 				return Language.VisualBasic;
 			}
 
+			// Throw exception instead?
 			return Language.None;
 		}
 	}

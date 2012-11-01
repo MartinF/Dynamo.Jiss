@@ -4,18 +4,18 @@ namespace Dynamo.Jiss
 {
 	public class FileData
 	{
-		public FileData(string name, string content)
+		public FileData(string filename, string content)
 		{
-			if (name == null)
-				throw new ArgumentNullException("name");
+			if (filename == null)
+				throw new ArgumentNullException("filename");
 			if (content == null)
 				throw new ArgumentNullException("content");
 
-			Name = name;
+			Filename = filename;
 			Content = content;
 		}
 
-		public string Name { get; private set; }
+		public string Filename { get; private set; }
 		public string Content { get; set; }
 	}
 }

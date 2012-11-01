@@ -18,7 +18,7 @@ namespace Dynamo.Jiss.Compilation
 			if (source == null)
 				throw new ArgumentNullException("source");
 			if (basePath == null)
-				throw new ArgumentNullException("BasePath");
+				throw new ArgumentNullException("basePath");
 
 			if (!PathHelper.IsAbsolutePath(basePath))
 				throw new ArgumentException("basePath should be a fully qualified path");

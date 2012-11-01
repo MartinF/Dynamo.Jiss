@@ -7,15 +7,12 @@ using VSLangProj;
 
 // Cancel Build Event ?
 
-
 // See old VsProjectItemManager
 
 // Add File to Project - if not alreday added
 // Possible to Nest below existing project item
 
 // remove / delete from ProjectItem
-
-// rename ?
 
 namespace Dynamo.Jiss
 {
@@ -58,10 +55,6 @@ namespace Dynamo.Jiss
 
 
 
-
-
-
-
 		public static ProjectItem GetRelativeItem(this Project project, string relativePath)
 		{
 			if (project == null)
@@ -99,11 +92,6 @@ namespace Dynamo.Jiss
 
 			return current;
 		}
-
-
-
-
-
 
 
 
