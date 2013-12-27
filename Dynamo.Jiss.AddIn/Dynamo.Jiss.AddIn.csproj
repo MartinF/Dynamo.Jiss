@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,6 +12,8 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>Dynamo.Jiss.AddIn</AssemblyName>
     <DeploymentDirectory>.\bin\</DeploymentDirectory>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <IncrementalBuild>false</IncrementalBuild>
     <DocumentationFile>Dynamo.Jiss.AddIn.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -32,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
     <IncrementalBuild>false</IncrementalBuild>
     <DocumentationFile>Dynamo.Jiss.AddIn.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>Dynamo.Jiss.AddIn</RootNamespace>

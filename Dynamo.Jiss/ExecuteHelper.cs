@@ -72,8 +72,6 @@ namespace Dynamo.Jiss
 			return result.ExitCode == 0;
 		}
 
-
-
 		public static string GetJavaInstallationPath()
 		{
 			if (_javaInstallPath == null)
@@ -111,19 +109,16 @@ namespace Dynamo.Jiss
 
 
 
-
-
-
 		public static void ExecuteWithDelay(int ms, EventHandler action)
 		{
-			var tmp = new Timer { Interval = ms };
-			tmp.Tick += new EventHandler((o, e) => tmp.Enabled = false);
-			tmp.Tick += action;
-			tmp.Enabled = true;
+			// Use System.Threading.Timer or System.Timers.Timer instead?
+
+			var timer = new Timer { Interval = ms };
+			timer.Tick += new EventHandler((o, e) => timer.Enabled = false);
+			timer.Tick += action;
+			timer.Enabled = true;
 		}
 	}
-
-
 
 	public class ProcessResult
 	{

@@ -12,7 +12,7 @@ namespace Dynamo.Jiss.Compilation
 	public class JissReader : IJissReader
 	{
 		#region Fields
-		private readonly List<JissBase> _tree = new List<JissBase>();	// not really a tree ! better name?
+		private readonly List<JissBase> _scripts = new List<JissBase>();
 		#endregion
 
 		#region Constructors
@@ -21,7 +21,7 @@ namespace Dynamo.Jiss.Compilation
 			if (target == null)
 				throw new ArgumentNullException("target");
 
-			_tree.Add(target);			// Happens in both constructors - could be first part of ReadIncludes instead somehow ? or create private constructor ?
+			_scripts.Add(target);			// Happens in both constructors - could be first part of ReadIncludes instead somehow ? or create private constructor ?
 
 			var loaded = new List<string>();
 			loaded.Add(target.FullName);
@@ -33,7 +33,7 @@ namespace Dynamo.Jiss.Compilation
 			if (target == null)
 				throw new ArgumentNullException("target");
 
-			_tree.Add(target);
+			_scripts.Add(target);
 
 			var loaded = new List<string>();
 
@@ -55,7 +55,7 @@ namespace Dynamo.Jiss.Compilation
 					
 					// Save it
 					loaded.Add(include);
-					_tree.Add(jiss);
+					_scripts.Add(jiss);
 
 					// Read the includes
 					ReadIncludes(jiss, loaded);
@@ -65,21 +65,21 @@ namespace Dynamo.Jiss.Compilation
 
 		public IEnumerable<string> GetSources()
 		{
-			return _tree.Select(jiss => jiss.Source);
+			return _scripts.Select(jiss => jiss.Source);
 		}
 
 		public IEnumerable<string> GetReferences()
 		{
 			// Filter duplicates ?
 
-			return _tree.SelectMany(jiss => jiss.GetReferences());
+			return _scripts.SelectMany(jiss => jiss.GetReferences());
 		}
 
 		public IEnumerable<string> GetGacs()
 		{
 			// Filter duplicates ?
 
-			return _tree.SelectMany(jiss => jiss.GetGacs());
+			return _scripts.SelectMany(jiss => jiss.GetGacs());
 		}
 		#endregion
 	}

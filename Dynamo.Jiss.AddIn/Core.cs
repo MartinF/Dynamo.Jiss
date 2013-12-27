@@ -17,7 +17,7 @@ using EnvDTE;
 
 // How to handle the Resolving of the assemblies created and their references ? Global or for each assembly generated?
 
-// Write tests, helpers, extensions, core, compilation ... ******** !!!!!!
+// Write tests, helpers, extensions, core, compilation ... 
 
 namespace Dynamo.Jiss.AddIn
 {
@@ -79,21 +79,24 @@ namespace Dynamo.Jiss.AddIn
 		}
 		public void Load(ProjectItem item)
 		{
-			// What if setup doesnt do anything? - type / instance is still stored ?
+			// Split the logic of this method into smaller pieces
+			// Wrap with Try/Catch and print any exceptions (if debug build etc)
+			// Handle missing references/includes better - print out what is being loaded and if some path is not found
 
-			// Split up logic in this method - to make it more simple
+			
 
-
-	
 			if (item == null)
 				throw new ArgumentNullException("item");
+			
+			// If this is public then check if it is a Jiss file here ... else make private ?
+			// Right now every method that calls it checks it instead ?
 
 			// Check if item is ProjectFile or IsJiss here ?
 			//if (!item.IsProjectFile() or IsJiss())
 			//    return;
 
 
-	
+
 			var filename = item.FileNames[0];	// create extension method GetFullName ?
 
 			// Load the file and create a reader
@@ -138,6 +141,7 @@ namespace Dynamo.Jiss.AddIn
 				}
 
 				Report(errors);	// Show errors in the Error List instead !?
+				
 				return;
 			}
 
@@ -262,9 +266,11 @@ namespace Dynamo.Jiss.AddIn
 				{
 					action(entry.EventModel);
 				}
-				catch (Exception)
+				catch (Exception e)
 				{
-					Report("The " + action.Method.Name + " event in " + entry.ProjectItem.Name + " threw an exception. "); // Better description !?
+					var errorMsg = "The " + action.Method.Name + " event in " + entry.ProjectItem.Name + " threw an exception.";
+					errorMsg += Environment.NewLine + "Stack trace: " + e.StackTrace;
+					Report(errorMsg);
 				}
 			}
 		}
@@ -279,8 +285,6 @@ namespace Dynamo.Jiss.AddIn
 		#endregion
 	}
 }
-
-
 
 
 
